@@ -1,0 +1,16 @@
+# systemd service: keeps the bot running 24/7 and restarts it if it crashes
+# or the server reboots. Edit User and paths if your username/folder differ.
+[Unit]
+Description=Roostoo trading bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/Under_testing
+ExecStart=/usr/bin/python3 /home/ubuntu/Under_testing/bot.py
+Restart=always
+RestartSec=15
+
+[Install]
+WantedBy=multi-user.target
