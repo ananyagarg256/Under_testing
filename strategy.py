@@ -109,13 +109,13 @@ def compute_targets(bars, held_pairs):
     for pair, closes in bars.items():
         vol = asset_volatility(closes)
         score = trend_score(closes, vol)
-          er = efficiency_ratio(closes, C.ER_BARS)
-          diag[pair] = {"score": score, "vol": vol, "er": er}
-          if score is None:
-              continue
-          held = pair in held_pairs
-          if not held and er is not None and er < C.MIN_EFFICIENCY:
-              continue
+        er = efficiency_ratio(closes, C.ER_BARS)
+        diag[pair] = {"score": score, "vol": vol, "er": er}
+        if score is None:
+             continue
+        held = pair in held_pairs
+        if not held and er is not None and er < C.MIN_EFFICIENCY:
+             continue
         if score > (C.EXIT_SCORE if held else C.ENTRY_SCORE):
             rank_key = score + (C.HOLD_RANK_BONUS if held else 0.0)
             candidates.append((rank_key, pair, score, vol))
