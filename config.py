@@ -8,13 +8,13 @@ WHY you changed them. Times are in 15-minute bars unless stated otherwise
 
 # ----------------------------- Universe -----------------------------
 CORE_PAIRS = ["BTC/USD", "ETH/USD"]          # always traded
-UNIVERSE_SIZE = 10                           # total coins to trade (most liquid on Roostoo)
+UNIVERSE_SIZE = 25                          # total coins to trade (most liquid on Roostoo)
 EXCLUDE_COINS = {                            # stablecoins / wrapped / gold: no trend to trade
     "USDT", "USDC", "FDUSD", "DAI", "TUSD", "BUSD", "USD1", "PYUSD", "USDE",
     "USDP", "EUR", "EURI", "PAXG", "XAUT", "WBTC", "WETH", "STETH", "WBETH",
 }
 MIN_WARMUP_BARS = 400                        # a coin needs this much history to be traded
-
+MIN_EFFICIENCY = 0.15
 # ------------------------------ Timing ------------------------------
 POLL_SECONDS = 60                            # read prices once a minute (no HFT)
 BAR_MINUTES = 15
@@ -42,13 +42,13 @@ REGIME_LONG_EMA = (96, 384)                  # 1-day vs 4-day trend
 REGIME_MIN_MULT = 0.35                       # exposure multiplier in a full bear regime (1.0 in bull)
 
 # ------------------------------ Sizing ------------------------------
-TARGET_ANNUAL_VOL = 0.50                     # portfolio risk budget (BTC alone is ~45-60%)
+TARGET_ANNUAL_VOL = 0.70                     # portfolio risk budget (BTC alone is ~45-60%)
 MAX_WEIGHT_PER_ASSET = 0.30                  # never more than 30% in one coin
 MAX_GROSS_EXPOSURE = 0.90                    # never more than 90% invested
 
 # ------------------------------- Risk -------------------------------
-TRAIL_STOP_DAILY_SIGMAS = 2.0                # trailing stop = 2 x the coin's daily volatility
-TRAIL_STOP_MIN = 0.025                       # ...but at least 2.5% below the peak
+TRAIL_STOP_DAILY_SIGMAS = 3.0                # trailing stop = 2 x the coin's daily volatility
+TRAIL_STOP_MIN = 0.04                      # ...but at least 2.5% below the peak
 TRAIL_STOP_MAX = 0.12                        # ...and at most 12%
 STOP_COOLDOWN_BARS = 8                       # after a stop, wait 2h before re-entering that coin
 
