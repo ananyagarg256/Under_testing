@@ -74,7 +74,7 @@ MAX_ORDERS_PER_HOUR = 40                     # safety cap on request volume
 DAILY_FORCE_HOUR_UTC = 20                    # if no trade yet today by 20:00 UTC, rebalance exactly
 
 # ----------------------------- Backtest -----------------------------
-  BACKTEST_PAIRS = ["BTC/USD", "ETH/USD", "SOL/USD", "BNB/USD", "XRP/USD", "DOGE/USD",
+BACKTEST_PAIRS = ["BTC/USD", "ETH/USD", "SOL/USD", "BNB/USD", "XRP/USD", "DOGE/USD",
                     "ADA/USD", "AVAX/USD", "LINK/USD", "SUI/USD", "NEAR/USD", "FET/USD",
                     "PEPE/USD", "BONK/USD", "WIF/USD", "LTC/USD", "DOT/USD", "UNI/USD",
                     "AAVE/USD", "TRX/USD", "ENA/USD", "APT/USD", "ARB/USD", "WLD/USD", "SEI/USD"]
