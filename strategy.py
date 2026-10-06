@@ -47,6 +47,14 @@ def asset_volatility(closes):
     vols = [v for v in (bar_volatility(closes, C.VOL_SHORT_BARS),
                         bar_volatility(closes, C.VOL_LONG_BARS)) if v]
     return max(vols) if vols else None
+  
+def efficiency_ratio(closes, n):
+      """1 = clean trend, 0 = pure chop. None if not enough data."""
+      if len(closes) < n + 1:
+          return None
+      window = closes[-(n + 1):]
+      path = sum(abs(b - a) for a, b in zip(window[:-1], window[1:]))
+      return abs(window[-1] - window[0]) / path if path > 0 else 0.0
 
 
 def _ema_vote(closes, fast, slow, vol):
@@ -101,10 +109,13 @@ def compute_targets(bars, held_pairs):
     for pair, closes in bars.items():
         vol = asset_volatility(closes)
         score = trend_score(closes, vol)
-        diag[pair] = {"score": score, "vol": vol}
-        if score is None:
-            continue
-        held = pair in held_pairs
+          er = efficiency_ratio(closes, C.ER_BARS)
+          diag[pair] = {"score": score, "vol": vol, "er": er}
+          if score is None:
+              continue
+          held = pair in held_pairs
+          if not held and er is not None and er < C.MIN_EFFICIENCY:
+              continue
         if score > (C.EXIT_SCORE if held else C.ENTRY_SCORE):
             rank_key = score + (C.HOLD_RANK_BONUS if held else 0.0)
             candidates.append((rank_key, pair, score, vol))
