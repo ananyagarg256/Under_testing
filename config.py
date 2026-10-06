@@ -25,6 +25,8 @@ BARS_PER_YEAR = 365 * BARS_PER_DAY
 
 # ----------------------------- Signals ------------------------------
 # Trend measured at three speeds: (fast EMA, slow EMA) in bars
+ER_BARS = 96
+MIN_EFFICIENCY = 0.0
 EMA_PAIRS = [(16, 64), (32, 128), (64, 256)]   # 4h/16h, 8h/32h, 16h/64h
 MOMENTUM_BARS = 192                          # 48h return
 TREND_Z_SCALE = 0.5                          # how strong a trend must be for a full vote
@@ -72,6 +74,8 @@ MAX_ORDERS_PER_HOUR = 40                     # safety cap on request volume
 DAILY_FORCE_HOUR_UTC = 20                    # if no trade yet today by 20:00 UTC, rebalance exactly
 
 # ----------------------------- Backtest -----------------------------
-BACKTEST_PAIRS = ["BTC/USD", "ETH/USD", "SOL/USD", "BNB/USD", "XRP/USD",
-                  "DOGE/USD", "ADA/USD", "AVAX/USD", "LINK/USD", "SUI/USD"]
+  BACKTEST_PAIRS = ["BTC/USD", "ETH/USD", "SOL/USD", "BNB/USD", "XRP/USD", "DOGE/USD",
+                    "ADA/USD", "AVAX/USD", "LINK/USD", "SUI/USD", "NEAR/USD", "FET/USD",
+                    "PEPE/USD", "BONK/USD", "WIF/USD", "LTC/USD", "DOT/USD", "UNI/USD",
+                    "AAVE/USD", "TRX/USD", "ENA/USD", "APT/USD", "ARB/USD", "WLD/USD", "SEI/USD"]
 BACKTEST_FEE = 0.001                         # assume all market orders (conservative)
