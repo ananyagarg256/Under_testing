@@ -14,12 +14,31 @@ import config as C
 
 # Each variant = settings that differ from config.py
 VARIANTS = {
-      "A current": {},
-      "B more risk": {"TARGET_ANNUAL_VOL": 0.7},
-      "C chop filter": {"MIN_EFFICIENCY": 0.15},
-      "D more risk + chop": {"TARGET_ANNUAL_VOL": 0.7, "MIN_EFFICIENCY": 0.15},
-      "E D + wider stops": {"TARGET_ANNUAL_VOL": 0.7, "MIN_EFFICIENCY": 0.15,
-                            "TRAIL_STOP_DAILY_SIGMAS": 3.0, "TRAIL_STOP_MIN": 0.04},
+    "A old settings": {
+        "TARGET_ANNUAL_VOL": 0.5,
+        "TRAIL_STOP_DAILY_SIGMAS": 2.0,
+        "TRAIL_STOP_MIN": 0.025
+    },
+
+    "B more risk": {
+        "TARGET_ANNUAL_VOL": 0.7
+    },
+
+    "C chop filter": {
+        "MIN_EFFICIENCY": 0.15
+    },
+
+    "D more risk + chop": {
+        "TARGET_ANNUAL_VOL": 0.7,
+        "MIN_EFFICIENCY": 0.15
+    },
+
+    "E D + wider stops": {
+        "TARGET_ANNUAL_VOL": 0.7,
+        "MIN_EFFICIENCY": 0.15,
+        "TRAIL_STOP_DAILY_SIGMAS": 3.0,
+        "TRAIL_STOP_MIN": 0.04
+    },
 }
 PERIODS = [14, 30, 60]
 
