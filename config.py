@@ -14,7 +14,7 @@ EXCLUDE_COINS = {                            # stablecoins / wrapped / gold: no 
     "USDP", "EUR", "EURI", "PAXG", "XAUT", "WBTC", "WETH", "STETH", "WBETH",
 }
 MIN_WARMUP_BARS = 400                        # a coin needs this much history to be traded
-MIN_EFFICIENCY = 0.15
+
 # ------------------------------ Timing ------------------------------
 POLL_SECONDS = 60                            # read prices once a minute (no HFT)
 BAR_MINUTES = 15
@@ -26,7 +26,7 @@ BARS_PER_YEAR = 365 * BARS_PER_DAY
 # ----------------------------- Signals ------------------------------
 # Trend measured at three speeds: (fast EMA, slow EMA) in bars
 ER_BARS = 96
-MIN_EFFICIENCY = 0.0
+MIN_EFFICIENCY = 0.15
 EMA_PAIRS = [(16, 64), (32, 128), (64, 256)]   # 4h/16h, 8h/32h, 16h/64h
 MOMENTUM_BARS = 192                          # 48h return
 TREND_Z_SCALE = 0.5                          # how strong a trend must be for a full vote
